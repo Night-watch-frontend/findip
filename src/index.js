@@ -1,8 +1,7 @@
-import { getAddress, validateIP } from "./helpers";
+import { addOffset, getAddress, validateIP, addTileLayer } from "./helpers";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import icon from "../images/icon-location.svg";
-import { addTileLayer } from "./helpers";
 
 const ipInput = document.querySelector(".search-bar__input");
 const btn = document.querySelector(".search-bar__btn");
@@ -55,4 +54,12 @@ function setInfo(mapData) {
   L.marker([lat, lng], {
     icon: markerIcon,
   }).addTo(map);
+
+  if (matchMedia("(max-width: 1023px)").matches) {
+    addOffset(map);
+  }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  getAddress("8.8.8.8").then(setInfo);
+});
