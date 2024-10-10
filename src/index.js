@@ -23,8 +23,6 @@ const markerIcon = L.icon({
   /* iconAnchor: [22, 94], */
 });
 
-L.marker([51.505, -0.09], { icon: markerIcon }).addTo(map);
-
 btn.addEventListener("click", getData);
 ipInput.addEventListener("keydown", handleKey);
 
